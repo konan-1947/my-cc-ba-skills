@@ -3,7 +3,7 @@ name: ba
 description: Business Analyst discovery session. Use when the user invokes /ba, mentions "requirements gathering", "clarify requirements", "analyze feature", or wants to turn a vague idea into sprint-ready documentation.
 disable-model-invocation: true
 argument-hint: <idea or feature description>
-allowed-tools: AskUserQuestion
+allowed-tools: AskUserQuestion, Write, Bash
 ---
 
 # BA Discovery Session
@@ -102,7 +102,11 @@ Goal: confirm the problem is real and worth solving before writing requirements.
 
 ## Output — Sprint Document
 
-Once all groups are sufficiently covered, output:
+Once all groups are sufficiently covered, write the document to `sprint/[feature-name].md` in the current working directory (create the `sprint/` folder if it doesn't exist), then tell the user the file path.
+
+Use kebab-case for the filename, derived from the feature name. Example: `sprint/user-registration.md`.
+
+The document format:
 
 ```markdown
 # Sprint Document: [Feature Name]
