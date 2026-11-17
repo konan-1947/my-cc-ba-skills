@@ -1,0 +1,11 @@
+{
+  "title": "EDUA PROJECT REPORT",
+  "subtitle": "Report 3 - Software Requirement Specification",
+  "date_line": "- Hanoi, Jun 2026 -",
+  "footer": "Edua - G20 - Report 3 (SRS Document)",
+  "page": "A4",
+  "font": "Calibri",
+  "font_size": 11,
+  "toc_levels": 4,
+  "parts": ["00-record.md", "01-overall.md", "02-usecases.md", "03-screens.md", "04-nfr.md", "05-appendix.md"]
+}

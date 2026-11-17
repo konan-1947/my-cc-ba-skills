@@ -1,0 +1,19 @@
+{
+  "title": "Login with Google",
+  "type": "flowchart",
+  "nodes": [
+    {"id": "s",  "type": "start",   "name": "Start"},
+    {"id": "t1", "type": "task",    "name": "User selects Google sign-in"},
+    {"id": "t2", "type": "task",    "name": "Google authenticates the user"},
+    {"id": "g1", "type": "gateway", "name": "Active account with a role?"},
+    {"id": "t3", "type": "task",    "name": "Create session, open home"},
+    {"id": "t4", "type": "task",    "name": "Show access-denied message"},
+    {"id": "e1", "type": "end",     "name": "Signed in"},
+    {"id": "e2", "type": "end-error", "name": "Denied"}
+  ],
+  "flows": [
+    {"from": "s", "to": "t1"}, {"from": "t1", "to": "t2"}, {"from": "t2", "to": "g1"},
+    {"from": "g1", "to": "t3", "label": "Yes"}, {"from": "g1", "to": "t4", "label": "No"},
+    {"from": "t3", "to": "e1"}, {"from": "t4", "to": "e2"}
+  ]
+}

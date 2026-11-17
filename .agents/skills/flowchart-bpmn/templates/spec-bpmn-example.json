@@ -1,0 +1,31 @@
+{
+  "title": "1.2.1 Create lesson plan process",
+  "type": "bpmn",
+  "lanes": [
+    {"id": "teacher", "name": "Teacher"},
+    {"id": "system", "name": "System"},
+    {"id": "ai", "name": "AI/LLM"}
+  ],
+  "nodes": [
+    {"id": "s",  "type": "start",   "name": "Start", "lane": "teacher"},
+    {"id": "t1", "type": "task",    "name": "Select subject, grade, lesson", "lane": "teacher"},
+    {"id": "t2", "type": "task",    "name": "Build prompt from KNTT content", "lane": "system"},
+    {"id": "t3", "type": "task",    "name": "Generate lesson plan", "lane": "ai"},
+    {"id": "g1", "type": "gateway", "name": "Generated?", "lane": "system"},
+    {"id": "t4", "type": "task",    "name": "Show error and Retry option", "lane": "system"},
+    {"id": "t5", "type": "task",    "name": "Save draft to Personal Library", "lane": "system"},
+    {"id": "t6", "type": "task",    "name": "Review and edit plan", "lane": "teacher"},
+    {"id": "e",  "type": "end",     "name": "Draft ready", "lane": "teacher"}
+  ],
+  "flows": [
+    {"from": "s",  "to": "t1"},
+    {"from": "t1", "to": "t2"},
+    {"from": "t2", "to": "t3"},
+    {"from": "t3", "to": "g1"},
+    {"from": "g1", "to": "t4", "label": "No"},
+    {"from": "t4", "to": "t2", "label": "Retry"},
+    {"from": "g1", "to": "t5", "label": "Yes"},
+    {"from": "t5", "to": "t6"},
+    {"from": "t6", "to": "e"}
+  ]
+}

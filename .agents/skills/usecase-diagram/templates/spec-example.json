@@ -1,0 +1,25 @@
+{
+  "title": "1.3.3.4 UCs for Teacher",
+  "system": "EDUA",
+  "actors": [
+    {"id": "teacher", "name": "Teacher", "side": "left"},
+    {"id": "math", "name": "Math Teacher", "side": "left", "parent": "teacher"},
+    {"id": "llm", "name": "AI/LLM Service", "side": "right"}
+  ],
+  "usecases": [
+    {"id": "uc02", "name": "Login"},
+    {"id": "uc05", "name": "Create Lesson Plan"},
+    {"id": "uc06", "name": "Edit Lesson Plan"},
+    {"id": "uc07", "name": "Export Lesson Plan"},
+    {"id": "uc12", "name": "Create Slide Outline"},
+    {"id": "uc14", "name": "Create Slide Deck"}
+  ],
+  "links": [
+    {"actor": "teacher", "uc": "uc05"}, {"actor": "teacher", "uc": "uc06"},
+    {"actor": "teacher", "uc": "uc07"}, {"actor": "teacher", "uc": "uc12"},
+    {"actor": "teacher", "uc": "uc14"}, {"actor": "llm", "uc": "uc05"},
+    {"actor": "llm", "uc": "uc14"}
+  ],
+  "includes": [{"from": "uc05", "to": "uc02"}],
+  "extends": [{"from": "uc07", "to": "uc06"}]
+}
